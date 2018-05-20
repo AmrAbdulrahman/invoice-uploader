@@ -5,12 +5,14 @@ import configureStore from './ConfigureStore';
 import rootSaga from '../Sagas/';
 
 import { reducer as snackbarReducer } from './Snackbar';
+import { reducer as uploadsReducer } from './Uploads';
 
 export default () => {
   const rootReducer = combineReducers({
     loadingBar: loadingBarReducer,
     snackbar: snackbarReducer,
     router: routerReducer,
+    uploads: uploadsReducer,
   });
 
   return configureStore(rootReducer, rootSaga);

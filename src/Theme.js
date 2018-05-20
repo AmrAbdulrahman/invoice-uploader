@@ -7,6 +7,7 @@ export default {
       red: '#d44a4a',
       orange: '#ff9300',
       yellow: '#efca37',
+      white: '#fff',
     },
     primary: lightGreen,
   },

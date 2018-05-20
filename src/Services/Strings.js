@@ -5,6 +5,9 @@ const Strings = new LocalizedStrings({
     navHeadline: 'Invoice Uploader',
     homePlaceholderMessage: `There's nothing to see here, keep moving...`,
     uploadInvoice: 'Upload Invoice',
+    defaultFileUploadPlaceholder: 'Drag and drop files',
+    loading: 'Loading...',
+    uploading: 'Uploading...',
   },
 });
 
