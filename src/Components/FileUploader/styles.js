@@ -6,6 +6,7 @@ export default theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
   file: {
     display: 'flex',
@@ -13,6 +14,7 @@ export default theme => ({
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     backgroundColor: theme.palette.common.white,
     border: '1px solid #d8d8d8',
+    width: '100%',
   },
   removeIcon: {
     marginLeft: theme.spacing.unit,

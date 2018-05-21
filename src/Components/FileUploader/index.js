@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import each from 'lodash/each';
@@ -16,9 +17,25 @@ import UploadsActions from '../../Redux/Uploads';
 import Strings from '../../Services/Strings';
 
 class FileUploader extends Component {
-  get file() {
+  get fileState() {
     const { uploads, identifier } = this.props;
     return get(uploads, identifier, {});
+  }
+
+  get file() {
+    return this.fileState.file || {};
+  }
+
+  // notify parent component when a file gets uploaded
+  componentDidUpdate(prevProps) {
+    const { uploads } = prevProps;
+    const prevFile = get(uploads, this.props.identifier, {});
+
+    if (this.file.id !== prevFile.id && this.file.id) {
+      this.props.onFileUpload(this.file);
+    } else {
+      this.props.onFileRemove(prevFile);
+    }
   }
 
   onDrop = files => {
@@ -30,12 +47,22 @@ class FileUploader extends Component {
     );
   };
 
-  renderLoading() {
+  renderUploading() {
     const { classes } = this.props;
 
     return (
       <div className={classes.file}>
         <Loading>{Strings.uploading}</Loading>
+      </div>
+    );
+  }
+
+  renderRemoving() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.file}>
+        <Loading>{Strings.removing}</Loading>
       </div>
     );
   }
@@ -70,11 +97,15 @@ class FileUploader extends Component {
   }
 
   render() {
-    if (this.file.loading) {
-      return this.renderLoading();
+    if (this.fileState.uploading) {
+      return this.renderUploading();
     }
 
-    if (this.file.uploaded) {
+    if (this.fileState.removing) {
+      return this.renderRemoving();
+    }
+
+    if (this.fileState.uploaded) {
       return this.renderFilePreview();
     }
 
@@ -87,11 +118,15 @@ FileUploader.propTypes = {
   buttonText: PropTypes.string,
   multiple: PropTypes.bool,
   accept: PropTypes.string,
+  onFileUpload: PropTypes.func,
+  onFileRemove: PropTypes.func,
 };
 
 FileUploader.defaultProps = {
   multiple: false,
   accept: 'image/*, .pdf',
+  onFileUpload() {},
+  onFileRemove() {},
 };
 
 const mapStateToProps = state => ({
@@ -103,6 +138,7 @@ const mapDispatchToProps = dispatch => ({
   remove: identifier => dispatch(UploadsActions.remove(identifier)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(FileUploader)
-);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles),
+)(FileUploader);
