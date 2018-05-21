@@ -1,4 +1,4 @@
-import lightGreen from '@material-ui/core/colors/lightGreen';
+import teal from '@material-ui/core/colors/teal';
 
 export default {
   palette: {
@@ -9,7 +9,7 @@ export default {
       yellow: '#efca37',
       white: '#fff',
     },
-    primary: lightGreen,
+    primary: teal,
   },
   zIndex: {
     loadingBar: 1600,

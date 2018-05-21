@@ -8,6 +8,12 @@ const Strings = new LocalizedStrings({
     defaultFileUploadPlaceholder: 'Drag and drop files',
     loading: 'Loading...',
     uploading: 'Uploading...',
+    removing: 'Removing...',
+    fieldIsRequired: 'Field is required',
+    invoice: 'Invoice',
+    addAdditionalFile: 'Add additional file',
+    additionalFiles: 'Additional files',
+    uploadAdditionalFile: 'Add additional file',
   },
 });
 

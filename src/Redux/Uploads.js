@@ -11,6 +11,8 @@ const { Types, Creators } = createActions({
   remove: [ 'identifier', 'file' ],
   removeSuccess: [ 'identifier' ],
   removeError: [ 'identifier', 'error' ],
+
+  reset: [ 'identifier' ],
 }, {
   prefix: 'Uploads/',
 });
@@ -19,7 +21,7 @@ const upload = (state, { identifier, file }) =>
   state.merge({
     ...state,
     [identifier]: {
-      loading: true,
+      uploading: true,
     },
   });
 
@@ -27,9 +29,9 @@ const uploadSuccess = (state, { identifier, file }) =>
   state.merge({
     ...state,
     [identifier]: {
-      loading: false,
+      uploading: false,
       uploaded: true,
-      ...file,
+      file,
     },
   });
 
@@ -37,7 +39,7 @@ const uploadError = (state, { identifier, error }) =>
   state.merge({
     ...state,
     [identifier]: {
-      loading: false,
+      uploading: false,
       error,
     },
   });
@@ -46,7 +48,7 @@ const remove = (state, { identifier, file }) =>
   state.merge({
     ...state,
     [identifier]: {
-      loading: true,
+      removing: true,
     },
   });
 
@@ -54,7 +56,7 @@ const removeSuccess = (state, { identifier }) =>
   state.merge({
     ...state,
     [identifier]: {
-      loading: false,
+      removing: false,
       uploaded: false,
     },
   });
@@ -63,9 +65,15 @@ const removeError = (state, { identifier, error }) =>
   state.merge({
     ...state,
     [identifier]: {
-      loading: false,
+      removing: false,
       error,
     },
+  });
+
+const reset = (state, { identifier }) =>
+  state.merge({
+    ...state,
+    [identifier]: {},
   });
 
 export const reducer = createReducer(initialState, {
@@ -76,6 +84,8 @@ export const reducer = createReducer(initialState, {
   [Types.REMOVE]: remove,
   [Types.REMOVE_SUCCESS]: removeSuccess,
   [Types.REMOVE_ERROR]: removeError,
+
+  [Types.RESET]: reset,
 });
 export const UploadsTypes = Types;
 export default Creators;

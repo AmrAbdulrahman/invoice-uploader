@@ -1,13 +1,14 @@
 import { delay } from 'redux-saga'
-import { put, call } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import UploadsActions from '../Redux/Uploads';
 // import Api from '../Services/Api';
 
+let id = 1;
 function * upload({ identifier, file }) {
   // mock
-  yield delay(3000);
+  yield delay(1000);
   yield put(UploadsActions.uploadSuccess(identifier, {
-    id: 1,
+    id: id++,
     name: file.name,
   }));
 
