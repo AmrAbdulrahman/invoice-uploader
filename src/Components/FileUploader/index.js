@@ -88,7 +88,13 @@ class FileUploader extends Component {
     const { classes, multiple, buttonText, accept } = this.props;
 
     return (
-      <Dropzone onDrop={this.onDrop} className={classes.dropzone} multiple={multiple} accept={accept}>
+      <Dropzone
+        accept={accept}
+        multiple={multiple}
+        activeStyle={{ borderColor: 'green' }}
+        className={classes.dropzone}
+        onDrop={this.onDrop}
+      >
         <Typography>
           <Button variant="raised" size="small">{buttonText}</Button> or drag and drop file{multiple ? 's' : ''}
         </Typography>

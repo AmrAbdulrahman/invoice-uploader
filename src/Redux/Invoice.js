@@ -17,6 +17,7 @@ const initialState = Immutable({
 const { Types, Creators } = createActions({
   addAdditionalFile: [ 'file' ],
   removeAdditionalFile: [ 'id' ],
+  resetAdditionalFiles: null,
 }, {
   prefix: 'Invoice/',
 });
@@ -36,9 +37,17 @@ const removeAdditionalFile = (state, { id }) =>
     additionalFilesById: pickBy(state.additionalFilesById, (file, id_) => `${id_}` !== `${id}`),
   });
 
+const resetAdditionalFiles = state =>
+  state.merge({
+    additionalFilesIds: [],
+    additionalFilesById: {},
+  });
+
+
 export const reducer = createReducer(initialState, {
   [Types.ADD_ADDITIONAL_FILE]: addAdditionalFile,
   [Types.REMOVE_ADDITIONAL_FILE]: removeAdditionalFile,
+  [Types.RESET_ADDITIONAL_FILES]: resetAdditionalFiles,
 });
 export const InvoiceTypes = Types;
 export default Creators;

@@ -12,6 +12,7 @@ import UploadsActions from '../../Redux/Uploads';
 import InvoiceActions from '../../Redux/Invoice';
 import {
   isRequired,
+  maxLength,
 } from '../../Services/Validators';
 import styles from './styles';
 
@@ -30,7 +31,7 @@ class AddAdditionalFileForm extends Component {
           },
           description: {
             value: '',
-            validators: [ isRequired() ],
+            validators: [ isRequired(), maxLength() ],
           },
         }
       }),
@@ -89,11 +90,11 @@ class AddAdditionalFileForm extends Component {
           </FormElement>
 
           {this.state.showDescription && [
-            <FormElement key="file" sm={8} md={9} lg={10}>
+            <FormElement key="description" sm={8} md={9} lg={10}>
               <TextField
                 fullWidth
                 autoFocus={true}
-                label={'File description'}
+                label={Strings.fileDescription}
                 value={description.value}
                 error={description.shouldShowError}
                 helperText={description.errorMessage || ' '}
@@ -101,9 +102,9 @@ class AddAdditionalFileForm extends Component {
               />
             </FormElement>,
 
-            <FormElement key="description" className={classes.actionsWrapper} sm={4} md={3} lg={2}>
-              <Button variant="raised" color="primary" type="submit">Add</Button>
-              <Button color="default" onClick={this.onCancelClick}>Cancel</Button>
+            <FormElement key="actions" className={classes.actionsWrapper} sm={4} md={3} lg={2}>
+              <Button variant="raised" color="primary" type="submit">{Strings.add}</Button>
+              <Button color="default" onClick={this.onCancelClick}>{Strings.cancel}</Button>
             </FormElement>
           ]}
         </FormGroup>
