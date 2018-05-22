@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import _get from 'lodash/get';
-import LoadingOverlay from '../../Components/LoadingOverlay';
+import LoadingOverlay from 'Components/LoadingOverlay';
 import InvoiceForm from './InvoiceForm';
 import AdditionalFiles from './AdditionalFiles';
 import AddAdditionalFileForm from './AddAdditionalFileForm';

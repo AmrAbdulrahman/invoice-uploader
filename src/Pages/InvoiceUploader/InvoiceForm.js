@@ -6,11 +6,11 @@ import classnames from 'classnames';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Modal from '../../Components/Modal';
-import FileUploader from '../../Components/FileUploader';
-import Form, { FormGroup, FormElement } from '../../Components/Form';
-import FormState from '../../FormEngine/FormState';
-import Strings from '../../Services/Strings';
+import Modal from 'Components/Modal';
+import FileUploader from 'Components/FileUploader';
+import Form, { FormGroup, FormElement } from 'Components/Form';
+import FormState from 'FormEngine/FormState';
+import Strings from 'Services/Strings';
 import UploadsActions from '../../Redux/Uploads';
 import InvoiceActions from '../../Redux/Invoice';
 import {
@@ -149,6 +149,10 @@ class InvoiceForm extends Component {
     }
   };
 
+  componentWillUnmount() {
+    this.props.resetFile('invoice');
+  }
+
   render() {
     const { classes } = this.props;
     const {
@@ -286,6 +290,7 @@ class InvoiceForm extends Component {
 
 const mapDispatchToProps = dispatch => ({
   removeFile: identifier => dispatch(UploadsActions.remove(identifier)),
+  resetFile: identifier => dispatch(UploadsActions.reset(identifier)),
   resetAdditionalFiles: () => dispatch(InvoiceActions.resetAdditionalFiles()),
   submit: invoice => dispatch(InvoiceActions.submit(invoice)),
 });

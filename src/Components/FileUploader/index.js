@@ -10,11 +10,11 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import Dropzone from 'react-dropzone';
-import Loading from '../Loading';
 
-import styles from './styles';
+import Loading from 'Components/Loading';
+import Strings from 'Services/Strings';
 import UploadsActions from '../../Redux/Uploads';
-import Strings from '../../Services/Strings';
+import styles from './styles';
 
 class FileUploader extends Component {
   get fileState() {

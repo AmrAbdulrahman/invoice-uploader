@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
 
+import AppLayout from 'Containers/Layout';
+import Home from 'Pages/Home';
+import InvoiceUploader from 'Pages/InvoiceUploader';
 import { history } from '../Redux/ConfigureStore';
-
-import AppLayout from '../Containers/Layout';
-import Home from '../Containers/Home';
-import InvoiceUploader from '../Containers/InvoiceUploader';
 
 class AppRouter extends Component {
   render() {

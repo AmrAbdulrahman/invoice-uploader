@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import LoadingIcon from '../LoadingIcon';
-import Strings from '../../Services/Strings';
+import LoadingIcon from 'Components/LoadingIcon';
+import Strings from 'Services/Strings';
 import styles from './styles';
 
 class Loading extends Component {

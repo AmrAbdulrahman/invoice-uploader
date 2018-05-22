@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import FileUploader from '../../Components/FileUploader';
-import Form, { FormGroup, FormElement } from '../../Components/Form';
-import FormState from '../../FormEngine/FormState';
-import Strings from '../../Services/Strings';
+import FileUploader from 'Components/FileUploader';
+import Form, { FormGroup, FormElement } from 'Components/Form';
+import FormState from 'FormEngine/FormState';
+import Strings from 'Services/Strings';
 import UploadsActions from '../../Redux/Uploads';
 import InvoiceActions from '../../Redux/Invoice';
 import {
   isRequired,
   maxLength,
-} from '../../Services/Validators';
+} from 'Services/Validators';
 import styles from './styles';
 
 class AddAdditionalFileForm extends Component {

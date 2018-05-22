@@ -2,6 +2,9 @@ export default theme => ({
   actionsWrapper: {
     display: 'flex',
     flexDirection: 'row-reverse',
+    '& > *': {
+      marginLeft: theme.spacing.unit,
+    }
   },
   requestActions: {
     marginTop: theme.spacing.unit * 2,
