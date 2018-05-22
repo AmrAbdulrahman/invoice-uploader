@@ -27,4 +27,11 @@ export default theme => ({
     width: 25,
     height: 25,
   },
+  buttonWithError: {
+    borderBottom: '2px solid red',
+  },
+  errorMessage: {
+    marginLeft: theme.spacing.unit,
+    color: 'red',
+  },
 });

@@ -113,9 +113,6 @@ class AddAdditionalFileForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-});
-
 const mapDispatchToProps = dispatch => ({
   removeFile: identifier => dispatch(UploadsActions.remove(identifier)),
   resetFile: identifier => dispatch(UploadsActions.reset(identifier)),
@@ -123,6 +120,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(null, mapDispatchToProps),
   withStyles(styles),
 )(AddAdditionalFileForm);

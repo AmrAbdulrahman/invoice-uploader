@@ -7,6 +7,7 @@ class FieldState {
     field = defaults(field, {
       value: '',
       validators: [],
+      reflectsOn: [],
       showErrorsOnDirty: false,
       showErrorsOnSubmission: true,
     }, {
@@ -21,7 +22,7 @@ class FieldState {
     });
 
     // initial value validation
-    this.validate();
+    setTimeout(() => this.validate());
   }
 
   validate() {

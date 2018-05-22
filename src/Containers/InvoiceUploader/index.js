@@ -3,10 +3,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import _get from 'lodash/get';
-import styles from './styles';
+import LoadingOverlay from '../../Components/LoadingOverlay';
 import InvoiceForm from './InvoiceForm';
 import AdditionalFiles from './AdditionalFiles';
 import AddAdditionalFileForm from './AddAdditionalFileForm';
+import styles from './styles';
 
 class InvoiceUploader extends Component {
   get invoiceIsUploaded() {
@@ -15,22 +16,26 @@ class InvoiceUploader extends Component {
   }
 
   render() {
-    // const { classes } = this.props;
+    const { invoice } = this.props;
 
     return (
-      <div>
+      <React.Fragment>
+        <LoadingOverlay active={invoice.loading} />
         <InvoiceForm />
-        {this.invoiceIsUploaded && [
-          <AdditionalFiles key='additional-files' />,
-          <AddAdditionalFileForm key='add-file-form' />
-        ]}
-      </div>
+        {this.invoiceIsUploaded && (
+          <React.Fragment>
+            <AdditionalFiles />
+            <AddAdditionalFileForm />
+          </React.Fragment>
+        )}
+      </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = state => ({
   uploads: state.uploads,
+  invoice: state.invoice,
 });
 
 export default compose(

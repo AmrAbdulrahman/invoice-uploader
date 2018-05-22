@@ -38,6 +38,12 @@ export const maxLength = (length = 20, message = Strings.maxLengthValidation) =>
   validator: value => `${value}`.length <= length,
 });
 
+export const exactLength = (length, message = Strings.exactLengthValidation) => new Validator({
+  key: 'EXACT_LENGTH',
+  message: template(message)({ length }),
+  validator: value => `${value}`.length === length,
+});
+
 export const onlyNumbers = (message = Strings.onlyNumbersValidation) => new Validator({
   key: 'ONLY_NUMBERS',
   message,

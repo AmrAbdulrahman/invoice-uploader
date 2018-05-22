@@ -8,6 +8,7 @@ export default {
       orange: '#ff9300',
       yellow: '#efca37',
       white: '#fff',
+      green: 'green',
     },
     primary: teal,
   },

@@ -5,9 +5,10 @@ import FieldState from './FieldState';
 
 class FormState {
   // 'key' is the form key in state, enables multiple forms per component
-  constructor({ key, component, fields }) {
+  constructor({ key, component, fields, transformer }) {
     this.key = key;
     this.component = component;
+    this.transformer = transformer;
 
     // for each field, create new Field, and hook up onUpdate/setState
     this.fields = reduce(fields, (fields, field, name) => {
@@ -24,6 +25,10 @@ class FormState {
   // setState of host Component on FieldUpdate
   onFieldUpdate = (name, newState) => {
     this.fields[name] = newState;
+
+    if (newState.reflectsOn.length) {
+      each(newState.reflectsOn, name_ => this.fields[name_].validate());
+    }
 
     this.flush();
   };
@@ -61,7 +66,13 @@ class FormState {
   }
 
   get values() {
-    return reduce(this.fields, (allValues, field) => set(allValues, field.name, field.value), {});
+    const values = reduce(this.fields, (allValues, field) => set(allValues, field.name, field.value), {});
+
+    if (this.transformer) {
+      return this.transformer(values);
+    }
+
+    return values;
   }
 }
 

@@ -4,4 +4,9 @@ export default theme => ({
       backgroundColor: theme.palette.common.red,
     }
   },
+  success: {
+    '& > div': {
+      backgroundColor: theme.palette.common.green,
+    }
+  },
 });

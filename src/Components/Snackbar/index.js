@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarActions from '../../Redux/Snackbar';
 import { withStyles } from '@material-ui/core/styles';
+import SnackbarActions from '../../Redux/Snackbar';
 import styles from './styles';
 
 class SnackbarBase extends Component {
   render() {
     const { classes, snackbar } = this.props;
+    const typesClasses = {
+      [classes.error]: snackbar.messageType === 'error',
+      [classes.success]: snackbar.messageType === 'success',
+    };
 
     return (
       <Snackbar
-        className={classnames({ [classes.error]: snackbar.messageType === 'error' })}
+        className={classnames(typesClasses)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         open={snackbar.open}
         onClose={this.props.close}
