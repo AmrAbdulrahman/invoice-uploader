@@ -1,7 +1,18 @@
 # Invoice Uploader
+A simple React application where users can submit invoices
+- users attache an `invoice file`
+- then, they get to add `target date` and `payment amount`
+- add a `receipient` in a modal
+- then attach as many additional files as needed, with `description`
 
 ## Why?
 It's completely for-fun project, where I can show a sample React/Redux application of mine.
+
+## Give it a look!
+[https://invoice-uploader-frontend.herokuapp.com/](https://invoice-uploader-frontend.herokuapp.com/)
+
+## Busy? here's a GIF
+![gif](http://g.recordit.co/mgTlyqtuJa.gif)
 
 ## Libraries/Frameworks Used
 - React
@@ -30,14 +41,41 @@ It's completely for-fun project, where I can show a sample React/Redux applicati
 - shallow tests have been provided for all components
 
 ## Deployment
-- I deploy the on Heroku
-  - I use buildpack [create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack)
+- The application is deployed on Heroku
+  - buildpack [create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack) has been used.
 - The deployment is hooked up with Github and configured to automatically deploy every time the code is `push`ed to the `master`.
   - In a real application env, we should change the configuration to deploy from specific `stable` branch
 - loggers are configured only on `development` environment
 
 ## Redux State Design
-- to be filled later...
+Store consists of two main substores
+- **Uploads/Files:** where I keep all uploaded files state
+- **Invoice:** where I keep the
+  - invoice data (target, amount, ...)
+  - invoice file
+  - additional files
+
+## UX
+- Validations jump in after a submission attempt
+- Fields get auto focused automatically when it should be
+- Loading indicators globally and per component
+- Users can drag and drop files to attach
+- Components/Forms dynamically show/disappear based on the form state
+
+## Form-Engine
+A custom [form engine](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/tree/master/src/FormEngine) has been implemented for this task
+- Benefits
+  - [Very simple to use](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/src/Pages/InvoiceUploader/AddAdditionalFileForm.js#L25), we just declare our form as part of the state
+  - Get full bunch of out of the box properties for the `form` and the `field`
+    - Form.isValid,values,transformers...
+    - Field.isValid,shouldShowError,errorMessage,...
+  - We have full control over the engine, its behaviour can be fully customized
+  - Provides consistent experience across the application
+  - We can easily define as many forms inside one component as we want
+  - Out of the box validations
+- Risks
+  - We don't have a community driving this engine.
+  - No clear documentation yet
 
 ## File Structure
 ```
