@@ -1,10 +1,9 @@
-import { delay } from 'redux-saga'
-import { put, select } from 'redux-saga/effects';
+import { put, select, call } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
+import Strings from 'Services/Strings';
+import Api from 'Services/Api';
 import InvoiceActions from '../Redux/Invoice';
 import SnackbarActions from '../Redux/Snackbar';
-import Strings from '../Services/Strings';
-// import Api from '../Services/Api';
 
 function * submit() {
   const invoiceState = yield select(state => state.invoice);
@@ -14,16 +13,15 @@ function * submit() {
     additionalFiles: additionalFilesIds.map(id => additionalFilesById[id]),
   };
 
-  yield delay(1000);
-  yield put(InvoiceActions.submitSuccess());
-  yield put(SnackbarActions.open(Strings.invoiceSentSuccessfully, 'success'));
-  yield put(push('/'));
+  const res = yield call(Api.invoice.submit, data);
 
-
-  // if (res.ok) {
-  // } else {
-  //   yield put(EventsActions.uploadError(res.error));
-  // }
+  if (res.ok) {
+    yield put(InvoiceActions.submitSuccess());
+    yield put(SnackbarActions.open(Strings.invoiceSentSuccessfully, 'success'));
+    yield put(push('/'));
+  } else {
+    yield put(InvoiceActions.uploadError(res.error));
+  }
 }
 
 export default {

@@ -44,10 +44,11 @@ const uploadError = (state, { identifier, error }) =>
     },
   });
 
-const remove = (state, { identifier, file }) =>
+const remove = (state, { identifier }) =>
   state.merge({
     ...state,
     [identifier]: {
+      ...state[identifier],
       removing: true,
     },
   });

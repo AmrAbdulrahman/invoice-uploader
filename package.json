@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-rc.0",
+    "apisauce": "^0.15.1",
     "classnames": "^2.2.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
