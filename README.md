@@ -1,12 +1,16 @@
 # Invoice Uploader
 A simple React application where users can submit invoices
-- users attache an `invoice file`
+- users attach an `invoice file`
 - then, they get to add `target date` and `payment amount`
 - add a `receipient` in a modal
 - then attach as many additional files as needed, with `description`
 
 ## Why?
 It's completely for-fun project, where I can show a sample React/Redux application of mine.
+
+## [Written requirements](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/tree/master/requirements)
+- [description](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/requirements/requirements.md)
+- [screens mockups](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/requirements/workflow.pdf)
 
 ## Give it a look!
 [https://invoice-uploader-frontend.herokuapp.com/](https://invoice-uploader-frontend.herokuapp.com/)
@@ -26,18 +30,18 @@ It's completely for-fun project, where I can show a sample React/Redux applicati
 - [react-scripts](https://github.com/facebook/create-react-app/blob/master/README.md#getting-started)
   - Encapsulates (with ability to eject and take full control):
     - Webpack, Babel, ESlint, ...
-  - We can smoothly build/deploy our React applications with [zero configurations](https://github.com/facebook/create-react-app#philosophy)
-  - We're not locked in, and we can [eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) at any point of time to have full control over webpack/babel plugins/eslint/... and all other tools.
+  - Smoothly build/deploy React applications with [zero configurations](https://github.com/facebook/create-react-app#philosophy)
+  - No locking-in, always possible to [eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) at any point of time to have full control over webpack/babel plugins/eslint/... and all other tools.
 
 ## UI
-- I've used [Material-UI](https://material-ui.com/) which's an awesome implementation of the Material Design for React
-- I've used [JSS](http://cssinjs.org/?v=v9.8.1) for the styling
+- [Material-UI](https://material-ui.com/) which's an awesome implementation of the Material Design for React
+- [JSS](http://cssinjs.org/?v=v9.8.1) for the styling
 - Layouts are based on [Flex-Grid](https://material-ui.com/layout/grid/#grid), the application is completely **responsive**.
 
 ## Testing
 **Important Note: To run tests you have to have watchman installed, please check [this issue](https://github.com/facebook/create-react-app/issues/871) for more details, to install watchman please follow [the installation guide](https://facebook.github.io/watchman/docs/install.html) on the official website**
 
-- I'm following the *philosophy* of trying to isolate components as much as possible and test it independetly. ([that's a good article that explains this philosophy](https://hacks.mozilla.org/2018/04/testing-strategies-for-react-and-redux/))
+- *philosophy:* trying to isolate components as much as possible and test it independetly. ([that's a good article that explains this philosophy](https://hacks.mozilla.org/2018/04/testing-strategies-for-react-and-redux/))
 - shallow tests have been provided for all components
 
 ## Deployment
@@ -66,16 +70,16 @@ Store consists of two main substores
 A custom [form engine](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/tree/master/src/FormEngine) has been implemented for this task
 - Benefits
   - [Very simple to use](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/src/Pages/InvoiceUploader/AddAdditionalFileForm.js#L25), we just declare our form as part of the state
-  - Get full bunch of out of the box properties for the `form` and the `field`
+  - Get a bunch of out of the box utilities for the `form` and the `field` objects
     - Form.isValid,values,transformers...
     - Field.isValid,shouldShowError,errorMessage,...
-  - We have full control over the engine, its behaviour can be fully customized
+  - Full control over the engine, its behaviour can be fully customized
   - Provides consistent experience across the application
-  - We can easily define as many forms inside one component as we want
+  - Easily define as many forms inside one component as needed
   - Out of the box validations
 - Risks
-  - We don't have a community driving this engine.
-  - No clear documentation yet
+  - No community driving this engine.
+  - A nice documentation has to be provided with simple and complex examples.
 
 ## File Structure
 ```
