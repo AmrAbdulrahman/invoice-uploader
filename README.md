@@ -1,18 +1,19 @@
 # Invoice Uploader
 A simple React application where users can submit invoices
-- users attach an `invoice file`
-- then, they get to add `target date` and `payment amount`
-- add a `receipient` in a modal
-- then attach as many additional files as needed, with `description`
+1. users attach an `invoice file`
+1. they get to add `target date` and `payment amount`
+1. add a `receipient` in a modal
+1. attach as many additional files as needed, with `description`
 
 ## Why?
 It's completely for-fun project, where I can show a sample React/Redux application of mine.
+It’s completely a for-fun project, aims at demonstrating how to create a sample Read/Redux web application.
 
-## [Written requirements](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/tree/master/requirements)
+## [Requirements](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/tree/master/requirements)
 - [description](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/requirements/requirements.md)
 - [screens mockups](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/requirements/workflow.pdf)
 
-## Give it a look!
+## Give It a Look!
 [https://invoice-uploader-frontend.herokuapp.com/](https://invoice-uploader-frontend.herokuapp.com/)
 
 ## Busy? here's a GIF
@@ -70,9 +71,9 @@ Store consists of two main substores
 A custom [form engine](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/tree/master/src/FormEngine) has been implemented for this task
 - Benefits
   - [Very simple to use](https://github.com/AmrAbdulrahman/invoice-uploader-frontend/blob/master/src/Pages/InvoiceUploader/AddAdditionalFileForm.js#L25), we just declare our form as part of the state
-  - Get a bunch of out of the box utilities for the `form` and the `field` objects
-    - Form.isValid,values,transformers...
-    - Field.isValid,shouldShowError,errorMessage,...
+  - Get a bunch of out of the box utilities for the `Form` and the `Field` objects
+    - `Form.isValid, Form.values, Form.transformers, ...`
+    - `Field.isValid, Field.shouldShowError, Field.errorMessage, ...`
   - Full control over the engine, its behaviour can be fully customized
   - Provides consistent experience across the application
   - Easily define as many forms inside one component as needed
